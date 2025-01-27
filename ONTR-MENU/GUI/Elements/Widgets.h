@@ -26,6 +26,11 @@ namespace CompLayout
         ImGui::SetCursorPosX((ImGui::GetWindowWidth() - Width) * 0.5f);
     }
 
+    inline void CenterNextWH(float Width, float Height)
+    {
+        ImGui::SetCursorPos(ImVec2((ImGui::GetWindowWidth() - Width) * 0.5f, (ImGui::GetWindowHeight() - Height) * 0.5f));
+    }
+
     // 文本定位::水平/垂直
     template <typename... Args>
     inline void TextCenterF(std::format_string<Args...> fmt, Args &&...args)
@@ -38,17 +43,17 @@ namespace CompLayout
 } // namespace CompLayout
 
 // IconButton: 参数1: 按钮标签文本, 参数2: 图标数据指针, 参数3: 图标数据大小, 参数4: 图标尺寸, 参数5: 按钮文本（可选）
-inline bool IconButton(const char *LabelText, const void *Icon_Data, const size_t Icon_DataSize, const ImVec2 &Icon_Size, const char *Text = nullptr)
+inline bool IconButton(const char *LabelText, const char *Text, const void *Icon_Data, const size_t Icon_DataSize, const ImVec2 &Icon_Size)
 {
     static std::unordered_map<const void *, ID3D11ShaderResourceView *> TextureCache;
     if (!TextureCache[Icon_Data])
         LoadTextureFromMemory(Icon_Data, Icon_DataSize, &TextureCache[Icon_Data], nullptr, nullptr);
-    const ImVec2 pos = ImGui::GetCursorPos(), size(Icon_Size.x + (Text ? ImGui::CalcTextSize(Text).x + 15.0f : 0), Icon_Size.y);
+    const ImVec2 pos = ImGui::GetCursorPos(), size(Icon_Size.x + (Text ? ImGui::CalcTextSize(Text).x + 5.0f : 0), Icon_Size.y);
     ImGui::PushID(LabelText);
-    static constexpr ImVec4 colors[] = {{0, 0, 0, 0}, {1, 1, 1, 0.1f}, {1, 1, 1, 0.2f}};
+    static constexpr ImVec4 colors[] = {{0, 0, 0, 0}};
     ImGui::PushStyleColor(ImGuiCol_Button, colors[0]);
-    ImGui::PushStyleColor(ImGuiCol_ButtonHovered, colors[1]);
-    ImGui::PushStyleColor(ImGuiCol_ButtonActive, colors[2]);
+    ImGui::PushStyleColor(ImGuiCol_ButtonHovered, colors[0]);
+    ImGui::PushStyleColor(ImGuiCol_ButtonActive, colors[0]);
     const bool clicked = ImGui::Button("##btn", size);
     ImGui::PopStyleColor(3);
     ImGui::SetCursorPos(pos);

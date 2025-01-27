@@ -22,7 +22,7 @@ namespace Style
 
             // 窗口样式
             style.WindowPadding = ImVec2(0.f, 0.f);
-            style.WindowRounding = 10.0f;
+            // style.WindowRounding = 10.0f;
             style.WindowBorderSize = 0.0f;
 
             // 子窗口样式
@@ -31,11 +31,11 @@ namespace Style
 
             // 框架样式
             style.FramePadding = ImVec2(10.0f, 10.0f);
-            style.FrameRounding = 10.0f;
+            // style.FrameRounding = 10.0f;
             style.FrameBorderSize = .0f;
 
             // 其他圆角
-            style.PopupRounding = 10.0f;
+            // style.PopupRounding = 10.0f;
             style.ScrollbarRounding = 10.0f;
             style.GrabRounding = 10.0f;
             style.TabRounding = 10.0f;
