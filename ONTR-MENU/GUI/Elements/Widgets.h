@@ -69,18 +69,41 @@ inline bool IconButton(const char *LabelText, const char *Text, const void *Icon
 }
 
 // StatusBar_Widgets: 参数1: 状态栏标签文本, 参数2: 纹理标识符, 参数3: 背景数据指针, 参数4: 背景数据大小, 参数5: 状态栏文本, 参数6: 组件尺寸（默认空）, 参数7: 主颜色（默认绿色）, 参数8: 侧边颜色（默认白色）
-inline void StatusBar_Widgets(const char *TextureID, const void *BackGround_Data, size_t BackGround_DataSize, const char *Text, ImVec2 WidgesSize = {}, ImU32 MainColor = IM_COL32(0, 175, 60, 255), ImU32 SideColor = 0xFFFFFFFF)
+inline bool StatusBar_Widgets(const char *TextureID, const void *BackGround_Data, size_t BackGround_DataSize, const char *Text, ImVec2 WidgesSize = {}, ImU32 MainColor = IM_COL32(0, 175, 60, 255), ImU32 SideColor = 0xFFFFFFFF, bool Clickable = false)
 {
     const ImVec2 cursor = ImGui::GetCursorScreenPos(), start_pos = ImGui::GetCursorPos();
     const float sideWidth = WidgesSize.x * 0.2f, iconSize = WidgesSize.y * 0.6f;
+
+    // 绘制背景
     ImGui::GetWindowDrawList()->AddRectFilled(cursor, {cursor.x + WidgesSize.x, cursor.y + WidgesSize.y}, MainColor, WidgesSize.y * 0.2f);
     ImGui::GetWindowDrawList()->AddRectFilled(cursor, {cursor.x + sideWidth, cursor.y + WidgesSize.y}, SideColor, WidgesSize.y * 0.2f, ImDrawFlags_RoundCornersLeft);
+
+    // 绘制图标
     ImGui::SetCursorPos({start_pos.x + (sideWidth - iconSize) * 0.5f, start_pos.y + (WidgesSize.y - iconSize) * 0.5f});
     RenderTexture(TextureID, BackGround_Data, BackGround_DataSize, {iconSize, iconSize});
+
+    // 绘制文本
     const float textWidth = ImGui::CalcTextSize(Text).x;
     ImGui::SetCursorPos({start_pos.x + sideWidth + (WidgesSize.x - sideWidth - textWidth) * 0.5f, start_pos.y + (WidgesSize.y - ImGui::GetTextLineHeight()) * 0.5f});
     ImGui::TextUnformatted(Text);
+
+    // 设置下一个控件的位置
     ImGui::SetCursorPosY(start_pos.y + WidgesSize.y + 5.0f);
+
+    // 检测点击
+    if (Clickable)
+    {
+        ImGui::PushID(TextureID);
+        ImGui::SetCursorScreenPos(cursor);
+        if (ImGui::InvisibleButton("##StatusBar_Widgets_Clickable", WidgesSize))
+        {
+            ImGui::PopID();
+            return true; // 点击后返回 true
+        }
+        ImGui::PopID();
+    }
+
+    return false; // 默认返回 false
 }
 
 // BeginChild_Layout: 参数1: 子窗口标签文本, 参数2: 子窗口尺寸, 参数3: 是否显示边框（默认true）
@@ -106,7 +129,7 @@ inline void BeginChild_Layout(const char *LabelText, const ImVec2 &WindowSize, b
 }
 
 // Slider_Widgets: 参数1: 滑块标签文本, 参数2: 滑块宽度, 参数3: 滑块值指针, 参数4: 滑块最小值, 参数5: 滑块最大值, 参数6: 值显示格式（默认"%.1f"）
-inline bool Slider_Widgets(const char *label, float width, float *value, float min, float max, const char *format = "%.1f")
+inline bool Slider_Widgets(const char *label, float width, float *value, float min, float max)
 {
     static std::unordered_map<const void *, float> lastValues;
     constexpr float height = 6.0f, knobRadius = height * 1.5f;
@@ -136,12 +159,12 @@ inline bool Slider_Widgets(const char *label, float width, float *value, float m
     draw_list->AddRectFilled(ImVec2(pos.x + knobRadius, y - height / 2), ImVec2(pos.x + width - knobRadius, y + height / 2), IM_COL32(79, 70, 229, 255), height / 2);
     draw_list->AddRectFilled(ImVec2(pos.x + knobRadius, y - height / 2), ImVec2(pos.x + knobRadius + sliderPos, y + height / 2), IM_COL32(50, 255, 100, 255), height / 2);
     draw_list->AddCircleFilled(ImVec2(pos.x + knobRadius + sliderPos, y), knobRadius, ImGui::IsItemActive() ? IM_COL32(200, 200, 200, 255) : IM_COL32(255, 255, 255, 255));
-    if (format)
-    {
-        ImGui::SameLine();
-        ImGui::SetCursorPosX(pos.x + width + 10);
-        ImGui::Text(format, *value);
-    }
+    // if (format)
+    // {
+    //     ImGui::SameLine();
+    //     ImGui::SetCursorPosX(pos.x + width + 10);
+    //     ImGui::Text(format, *value);
+    // }
     style.Colors[ImGuiCol_FrameBg] = oldFrameBgCol;
     ImGui::PopID();
     return changed;

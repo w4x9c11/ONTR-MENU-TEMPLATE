@@ -106,8 +106,8 @@ namespace HomeModule
 
         std::string response;
         auto session_handle = WinHttpOpen(L"Z3RO", WINHTTP_ACCESS_TYPE_DEFAULT_PROXY, 0, 0, 0);
-        auto connection_handle = session_handle ? WinHttpConnect(session_handle, L"38.165.20.82", INTERNET_DEFAULT_HTTP_PORT, 0) : nullptr;
-        auto request_handle = connection_handle ? WinHttpOpenRequest(connection_handle, L"GET", L"/notify.json", 0, 0, 0, 0) : nullptr;
+        auto connection_handle = session_handle ? WinHttpConnect(session_handle, L"yrbot.org", INTERNET_DEFAULT_HTTP_PORT, 0) : nullptr;
+        auto request_handle = connection_handle ? WinHttpOpenRequest(connection_handle, L"GET", L"/Notify.json", 0, 0, 0, 0) : nullptr;
 
         if (request_handle && WinHttpSendRequest(request_handle, 0, 0, 0, 0, 0, 0) && WinHttpReceiveResponse(request_handle, 0))
         {
