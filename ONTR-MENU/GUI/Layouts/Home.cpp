@@ -71,25 +71,25 @@ void Home_Layout()
 
         CompLayout::CenterNextWidth(ImGui::GetWindowWidth() * 0.8f);
         Notify_Widgets(
-            "显示部分设置仅有20系显卡以上有效果!\n 1.刷新率分子 (每秒菜单刷新缓冲速度) 刷新率分母 (默认显示器设置)",
-            "显示设置",
+            "Some display settings are only effective for GPUs of the 20 series or higher! (Recommended default)",
+            "GPU Settings",
             0.15f,
             IconTexture::OK, IconTexture::OK_size, IconTexture::Bar, IconTexture::Bar_size, IconTexture::quantity, IconTexture::quantity_size);
         ImGui::EndChild();
 
         ImGui::Dummy(ImVec2(0, 50));
 
-        CompLayout::TextAlign_Widgets(("当前帧率:" + std::to_string(static_cast<int>(ImGui::GetIO().Framerate)) + "FPS").c_str(), []() {}, 300.f);
+        CompLayout::TextAlign_Widgets(("Current Frame Rate:" + std::to_string(static_cast<int>(ImGui::GetIO().Framerate)) + "FPS").c_str(), []() {}, 300.f);
 
         CompLayout::TextAlign_Widgets(
-            Display_Data::SwitchVSync ? "垂直同步" : "快速同步",
+            Display_Data::SwitchVSync ? "Vertical Sync" : "Quick Sync",
             []()
             { Checkbox_Widgets("##SwitchVSync", &Display_Data::SwitchVSync); },
             40.f);
         if (!Display_Data::SwitchVSync)
         {
             CompLayout::TextAlign_Widgets(
-                "帧数限制",
+                "Frame Rate Limit",
                 []()
                 {
                     if (Slider_Widgets("##DisplayFPS", 300.f, &Display_Data::DisplayFPS, 60.0f, 360.0f,
@@ -101,7 +101,7 @@ void Home_Layout()
         }
 
         CompLayout::TextAlign_Widgets(
-            Display_Data::SwitchScreenMode ? "全屏模式" : "无边框模式",
+            Display_Data::SwitchScreenMode ? "Full-Screen Mode" : "Borderless Mode",
             []()
             {
                 if (Checkbox_Widgets("##fullscreen", &Display_Data::SwitchScreenMode))
@@ -112,7 +112,7 @@ void Home_Layout()
             40.f);
 
         CompLayout::TextAlign_Widgets(
-            ("缓冲数:" + std::to_string(Display_Data::BufferCount) + "BC").c_str(),
+            ("Number of Buffers:" + std::to_string(Display_Data::BufferCount) + "BC").c_str(),
             []()
             {
                 static float BufferCount = static_cast<float>(Display_Data::BufferCount);
@@ -125,7 +125,7 @@ void Home_Layout()
             300.f);
 
         CompLayout::TextAlign_Widgets(
-            ("刷新率分子:" + std::to_string(Display_Data::RefreshRate_Numerator) + "Hz").c_str(),
+            ("Refresh Rate Numerator:" + std::to_string(Display_Data::RefreshRate_Numerator) + "Hz").c_str(),
             []()
             {
                 static float Numerator = static_cast<float>(Display_Data::RefreshRate_Numerator);
@@ -138,7 +138,7 @@ void Home_Layout()
             300.f);
 
         CompLayout::TextAlign_Widgets(
-            ("刷新率分母:" + std::to_string(Display_Data::RefreshRate_Denominator)).c_str(),
+            ("Refresh Rate Denominator:" + std::to_string(Display_Data::RefreshRate_Denominator)).c_str(),
             []()
             {
                 static float Denominator = static_cast<float>(Display_Data::RefreshRate_Denominator);
@@ -151,7 +151,7 @@ void Home_Layout()
             300.f);
 
         CompLayout::TextAlign_Widgets(
-            ("MSAA采样数量:" + std::to_string(Display_Data::SampleCount) + "X").c_str(),
+            ("MSAA Sample Count:" + std::to_string(Display_Data::SampleCount) + "X").c_str(),
             []()
             {
                 static float msaa = static_cast<float>(Display_Data::SampleCount);
@@ -166,7 +166,7 @@ void Home_Layout()
             300.f);
 
         CompLayout::TextAlign_Widgets(
-            ("MSAA采样质量:" + std::to_string(Display_Data::SampleQuality) + "X").c_str(),
+            ("MSAA Sample Quality:" + std::to_string(Display_Data::SampleQuality) + "X").c_str(),
             []()
             {
                 static float quality = static_cast<float>(Display_Data::SampleQuality);
@@ -181,7 +181,7 @@ void Home_Layout()
             300.f);
 
         CompLayout::TextAlign_Widgets(
-            "背景设置",
+            "Background Settings",
             []()
             {
                 // 透明度滑块
@@ -198,7 +198,7 @@ void Home_Layout()
             300.f);
 
         CompLayout::TextAlign_Widgets(
-            !NVIDIA_Performance::EnableHighPerformance ? "平衡模式" : "最大性能模式",
+            !NVIDIA_Performance::EnableHighPerformance ? "Balanced Mode" : "Maximum Performance Mode",
             []()
             {
                 if (Checkbox_Widgets(
@@ -223,7 +223,7 @@ void Home_Layout()
             }
             // 显示当前分辨率
             ImGui::Text(
-                "当前: %dx%d", (int)resolutions[Current_Res].x, (int)resolutions[Current_Res].y);
+                "Current Resolution: %dx%d", (int)resolutions[Current_Res].x, (int)resolutions[Current_Res].y);
         }
         ImGui::EndGroup();
     }

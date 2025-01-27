@@ -28,23 +28,7 @@ namespace IO
     {
         ImGuiIO &io = ImGui::GetIO();
 
-        // 中文字体
-        io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\msyhbd.ttc", 18.0f, nullptr,
-            io.Fonts->GetGlyphRangesChineseFull());
-
-        // Emoji配置
-        static const ImWchar ranges[] = {
-            0x0001, // 起始范围
-            0xFFFF, // 结束范围
-            0x0000  // 结束标记
-        };
-
-        static ImFontConfig cfg;
-        cfg.OversampleH = cfg.OversampleV = 1;
-        cfg.MergeMode = true;
-
-        // 加载彩色Emoji
-        io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\seguiemj.ttf", 18.0f, &cfg, ranges);
+        io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\ConSolAB.ttf", 15.0f, nullptr, io.Fonts->GetGlyphRangesChineseFull());
 
         io.Fonts->Build();
     }

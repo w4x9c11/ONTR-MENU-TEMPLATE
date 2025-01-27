@@ -22,7 +22,7 @@ void ESP_Layout()
         ImGui::Dummy(ImVec2(0, 30));
 
         CompLayout::TextAlign_Widgets(
-            "二维视角 - 方框",
+            ESP_Settings::Settings_Player2DBOX ? "2D Box - ON" : "2D Box - OFF",
             []()
             {
                 // 二维视角 控制开关
@@ -58,7 +58,7 @@ void ESP_Layout()
         //     40.f);
 
         CompLayout::TextAlign_Widgets(
-            "人物血量 - 百分比",
+            ESP_Settings::Settings_PlayerHealthBar ? "Player Health - ON" : "2D Box - OFF",
             []()
             {
                 // 人物血量 控制开关
@@ -67,7 +67,7 @@ void ESP_Layout()
             40.f);
 
         CompLayout::TextAlign_Widgets(
-            "人物距离",
+            ESP_Settings::Settings_PlayerDistance ? "Player Distance - ON" : "Player Distance - OFF",
             []()
             {
                 // 人物距离 控制开关
@@ -76,7 +76,7 @@ void ESP_Layout()
             40.f);
 
         CompLayout::TextAlign_Widgets(
-            "人物名称",
+            ESP_Settings::Settings_PlayerName ? "Player Name - ON" : "Player Name - OFF",
             []()
             {
                 // 人物名称 控制开关
