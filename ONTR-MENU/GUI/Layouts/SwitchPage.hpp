@@ -2,13 +2,14 @@
 #include "../Elements/Animation.h"
 #include "../Elements/PagesData.h"
 
-void Panel_Layout();
-void NavBar_Layout();
-
 void Home_Layout();
 void ESP_Layout();
 void AIM_Layout();
 void Config_Layout();
+
+void Panel_Layout();
+void NavBar_Layout();
+void Figure_Settings();
 
 inline void (*Pages[])() = {Home_Layout, ESP_Layout, AIM_Layout, Config_Layout};
 

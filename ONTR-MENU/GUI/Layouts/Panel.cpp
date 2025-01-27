@@ -65,3 +65,40 @@ void NavBar_Layout()
 
     ImGui::EndChild();
 }
+
+// 人物面板
+void Figure_Settings()
+{
+    // Center Panel
+    ImGui::BeginChild("figure Settings", ImVec2(ImGui::GetWindowSize().x * 0.4f, ImGui::GetContentRegionAvail().y), false);
+    {
+        ImVec2 CenterPos = ImVec2((ImGui::GetWindowWidth() - 604) * 0.5f, (ImGui::GetWindowHeight() - 1070) * 0.5f);
+
+        ImGui::SetCursorPos(CenterPos);
+        RenderTexture("figure", ImageTexture::figure, ImageTexture::figure_size, ImVec2(604, 1070));
+        // 功能判断::矩形边框
+        if (ESP_Settings::Settings_Player2DBOX)
+        {
+            ImGui::GetWindowDrawList()->AddRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax(), ESP_Data::Player2DBOX_Color, 0.0f, 0, 2.0f);
+        }
+
+        if (AIM_Settings::Settings_PlayerHeadAIM)
+        {
+            ImGui::SetCursorPos(ImVec2(CenterPos.x + 290.f, CenterPos.y + 10.f));
+            RenderTexture("Red_AIM", IconTexture::Red_AIM, IconTexture::Red_AIM_Size, ImVec2(30, 30));
+        }
+
+        if (AIM_Settings::Settings_PlayerArmAIM)
+        {
+            ImGui::SetCursorPos(ImVec2(CenterPos.x + 95.f, CenterPos.y + 350.f));
+            RenderTexture("Green_AIM", IconTexture::Green_AIM, IconTexture::Green_AIM_Size, ImVec2(30, 30));
+        }
+
+        if (AIM_Settings::Settings_PlayerChestAIM)
+        {
+            ImGui::SetCursorPos(ImVec2(CenterPos.x + 290.f, CenterPos.y + 250.f));
+            RenderTexture("Yellow_AIM", IconTexture::Yellow_AIM, IconTexture::Yellow_AIM_Size, ImVec2(30, 30));
+        }
+    }
+    ImGui::EndChild();
+}

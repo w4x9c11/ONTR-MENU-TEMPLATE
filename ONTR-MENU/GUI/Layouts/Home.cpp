@@ -6,24 +6,24 @@ extern HWND hwnd;
 void Home_Layout()
 {
     // Left Panel
-    // (ImGui::GetTime() - Notify_Data::UpdataNotify_Time >= 30.f || (Notify_Data::Announce.empty() && !Notify_Data::Loading_Notify)) ? (Notify_Data::UpdataNotify_Time = static_cast<float>(ImGui::GetTime()), HomeModule::Get_Notify()) : void();
+    (ImGui::GetTime() - Notify_Data::UpdataNotify_Time >= 30.f || (Notify_Data::Announce.empty() && !Notify_Data::Loading_Notify)) ? (Notify_Data::UpdataNotify_Time = static_cast<float>(ImGui::GetTime()), HomeModule::Get_Notify()) : void();
 
     BeginChild_Layout("Notify & Help", {ImGui::GetWindowWidth() * 0.3f, ImGui::GetContentRegionAvail().y});
     {
-        // ImGui::SetCursorPosY(50);
+        ImGui::SetCursorPosY(50);
 
-        // CompLayout::CenterNextWidth(ImGui::GetWindowWidth() * 0.8f);
-        // for (const auto &[title, content, date] : Notify_Data::Announce)
-        // {
-        //     CompLayout::CenterNextWidth(ImGui::GetWindowWidth() * 0.8f); // 居中
-        //     Notify_Widgets(content.c_str(),
-        //         (date + ": " + title).c_str(),
-        //         0.2f,
-        //         IconTexture::OK, IconTexture::OK_size, IconTexture::Bar, IconTexture::Bar_size, IconTexture::quantity, IconTexture::quantity_size);
-        //     ImGui::EndChild();
+        CompLayout::CenterNextWidth(ImGui::GetWindowWidth() * 0.8f);
+        for (const auto &[title, content, date] : Notify_Data::Announce)
+        {
+            CompLayout::CenterNextWidth(ImGui::GetWindowWidth() * 0.8f); // 居中
+            Notify_Widgets(content.c_str(),
+                (date + ": " + title).c_str(),
+                0.2f,
+                IconTexture::OK, IconTexture::OK_size, IconTexture::Bar, IconTexture::Bar_size, IconTexture::quantity, IconTexture::quantity_size);
+            ImGui::EndChild();
 
-        //     ImGui::Dummy(ImVec2(0, 30)); // 间距
-        // }
+            ImGui::Dummy(ImVec2(0, 30)); // 间距
+        }
     }
     ImGui::EndChild();
 
@@ -79,10 +79,10 @@ void Home_Layout()
 
         ImGui::Dummy(ImVec2(0, 50));
 
-        CompLayout::TextAlign_Widgets(("Current Frame Rate:" + std::to_string(static_cast<int>(ImGui::GetIO().Framerate)) + "FPS").c_str(), []() {}, 300.f);
-
         CompLayout::TextAlign_Widgets(
-            Display_Data::SwitchVSync ? "Vertical Sync" : "Quick Sync",
+            (std::string(Display_Data::SwitchVSync ? "Vertical Sync " : "Quick Sync ") +
+                std::to_string(static_cast<int>(ImGui::GetIO().Framerate)) + " FPS")
+                .c_str(),
             []()
             { Checkbox_Widgets("##SwitchVSync", &Display_Data::SwitchVSync); },
             40.f);
@@ -92,8 +92,7 @@ void Home_Layout()
                 "Frame Rate Limit",
                 []()
                 {
-                    if (Slider_Widgets("##DisplayFPS", 300.f, &Display_Data::DisplayFPS, 60.0f, 360.0f,
-                            "%d Hz"))
+                    if (Slider_Widgets("##DisplayFPS", 300.f, &Display_Data::DisplayFPS, 60.0f, 360.0f))
                     {
                     }
                 },
@@ -117,7 +116,7 @@ void Home_Layout()
             {
                 static float BufferCount = static_cast<float>(Display_Data::BufferCount);
                 if (Slider_Widgets(
-                        "##BufferCount", 300.f, &BufferCount, 1.0f, 3.0f, "%d BC"))
+                        "##BufferCount", 300.f, &BufferCount, 1.0f, 3.0f))
                 {
                     Display_Data::BufferCount = static_cast<int>(BufferCount);
                 }
@@ -130,7 +129,7 @@ void Home_Layout()
             {
                 static float Numerator = static_cast<float>(Display_Data::RefreshRate_Numerator);
                 if (Slider_Widgets(
-                        "##RefreshRate_Numerator", 300.f, &Numerator, 30.0f, 360.0f, "%d Hz"))
+                        "##RefreshRate_Numerator", 300.f, &Numerator, 30.0f, 360.0f))
                 {
                     Display_Data::RefreshRate_Numerator = static_cast<int>(Numerator);
                 }
@@ -143,7 +142,7 @@ void Home_Layout()
             {
                 static float Denominator = static_cast<float>(Display_Data::RefreshRate_Denominator);
                 if (Slider_Widgets(
-                        "##RefreshRate_Denominator", 300.f, &Denominator, 1.0f, 1.0f, "%.0f"))
+                        "##RefreshRate_Denominator", 300.f, &Denominator, 1.0f, 1.0f))
                 {
                     Display_Data::RefreshRate_Denominator = static_cast<int>(Denominator);
                 }
@@ -155,7 +154,7 @@ void Home_Layout()
             []()
             {
                 static float msaa = static_cast<float>(Display_Data::SampleCount);
-                if (Slider_Widgets("##SampleCount", 300.f, &msaa, 1.0f, 8.0f, "%dx"))
+                if (Slider_Widgets("##SampleCount", 300.f, &msaa, 1.0f, 8.0f))
                 {
                     Display_Data::SampleCount = static_cast<int>(msaa);
                     CleanupRenderTarget();
@@ -170,7 +169,7 @@ void Home_Layout()
             []()
             {
                 static float quality = static_cast<float>(Display_Data::SampleQuality);
-                if (Slider_Widgets("##SampleQuality", 300.f, &quality, 0.0f, 4.0f, "%dx"))
+                if (Slider_Widgets("##SampleQuality", 300.f, &quality, 0.0f, 4.0f))
                 {
                     Display_Data::SampleQuality = static_cast<int>(quality);
                     CleanupRenderTarget();
