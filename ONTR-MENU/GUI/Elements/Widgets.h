@@ -183,7 +183,7 @@ inline void Notify_Widgets(const char *WindowName, const char *notice, float Win
     ImGui::SetCursorPos(ImVec2((size.x - ImGui::CalcTextSize(notice).x) * 0.5f, PADDING));
     ImGui::TextUnformatted(notice);
     const float barY = size.y * 0.25f;
-    ImGui::SetCursorPos(ImVec2(size.x * 0.1f, barY));
+    ImGui::SetCursorPos(ImVec2(size.x * 0.25f, barY));
     RenderTexture("Bar", Bar_Icon, Bar_Size, ImVec2(size.x * 0.5f, 8.f));
     ImGui::SetCursorPos(ImVec2(size.x * 0.15f, barY + 10.0f));
     ImGui::TextUnformatted(WindowName);
