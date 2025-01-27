@@ -30,7 +30,7 @@ namespace IO
 
         io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\ConSolAB.ttf", 15.0f, nullptr, io.Fonts->GetGlyphRangesChineseFull());
 
-        io.Fonts->Build();
+        // io.Fonts->Build();
     }
 
-} // namespace IO
+}
