@@ -1,6 +1,6 @@
 #pragma once
 #include "../../GUI/DeviceIO/device.h"
-#include "../../GUI/ImGui-UI/imgui.h"
+#include "../../GUI/ImGui/imgui.h"
 #include "../stb/stb_image.h"
 #include "../stb/stb_image_resize.h"
 #include <mutex>

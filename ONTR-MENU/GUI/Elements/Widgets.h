@@ -3,7 +3,7 @@
 #include "../../lib/VendorModle/Resources/GUI-image.h"
 #include "../../lib/VendorModle/stb-API.hpp"
 
-#include "../ImGui-UI/imgui_internal.h"
+#include "../ImGui/imgui_internal.h"
 
 namespace CompLayout
 {

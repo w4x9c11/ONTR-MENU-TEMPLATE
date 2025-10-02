@@ -1,5 +1,5 @@
 #pragma once
-#include "../ImGui-UI/imgui.h"
+#include "../ImGui/imgui.h"
 #include "../../lib/nlohmann/json.hpp"
 
 #include <d3d11.h>

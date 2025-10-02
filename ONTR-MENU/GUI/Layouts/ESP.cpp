@@ -15,7 +15,7 @@ void ESP_Layout()
 
         // 二维视角 控制开关
         CompLayout::TextAlign_Widgets(
-            ESP_Settings::Settings_Player2DBOX ? "2D Box - ON" : "2D Box - OFF",
+            ESP_Settings::Player2DBOX_Settings ? "2DBox - ON" : "2DBox - OFF",
             []()
             {
                 // 二维矩形 颜色控制器
@@ -28,60 +28,60 @@ void ESP_Layout()
                     ImGui::ColorPicker4("Box Color", (float *)&ESP_Data::Player2DBOX_Color, ImGuiColorEditFlags_AlphaBar);
                 }
                 ImGui::SameLine();
-                Checkbox_Widgets("#ESP_Settings_2DBOX", &ESP_Settings::Settings_Player2DBOX);
+                Checkbox_Widgets("#ESP 2DBox", &ESP_Settings::Player2DBOX_Settings);
             },
             70.f);
 
         CompLayout::TextAlign_Widgets(
-            ESP_Settings::Settings_Player3DBOX ? "3D Box - ON" : "3D Box - OFF",
+            ESP_Settings::Player3DBOX_Settings ? "3D Box - ON" : "3D Box - OFF",
             []()
             {
                 // 三维视角 控制开关
-                Checkbox_Widgets("#ESP_Settings_3DBOX", &ESP_Settings::Settings_Player3DBOX);
+                Checkbox_Widgets("#ESP 3DBox", &ESP_Settings::Player3DBOX_Settings);
             },
             40.f);
 
         CompLayout::TextAlign_Widgets(
-            ESP_Settings::Settings_2DSkeleton ? "2D Skeleton - ON" : "2D Skeleton - OFF",
+            ESP_Settings::Player2DSkeleton_Settings ? "2D Skeleton - ON" : "2D Skeleton - OFF",
             []()
             {
                 // 人物骨骼 控制开关
-                Checkbox_Widgets("#ESP_Settings_2DSkeleton", &ESP_Settings::Settings_2DSkeleton);
+                Checkbox_Widgets("#ESP 2DSkeleton", &ESP_Settings::Player2DSkeleton_Settings);
             },
             40.f);
 
         CompLayout::TextAlign_Widgets(
-            ESP_Settings::Settings_3DSkeleton ? "3D Skeleton - ON" : "3D Skeleton - OFF",
+            ESP_Settings::Player3DSkeleton_Settings ? "3D Skeleton - ON" : "3D Skeleton - OFF",
             []()
             {
                 // 人物骨骼 实现功能
-                Checkbox_Widgets("#ESP_Settings_3DSkeleton", &ESP_Settings::Settings_3DSkeleton); },
+                Checkbox_Widgets("#ESP 3DSkeleton", &ESP_Settings::Player3DSkeleton_Settings); },
             40.f);
 
         CompLayout::TextAlign_Widgets(
-            ESP_Settings::Settings_PlayerHealthBar ? "Player Health - ON" : "Player Health - OFF",
+            ESP_Settings::PlayerHealthBar_Settings ? "PlayerHealth - ON" : "PlayerHealth - OFF",
             []()
             {
                 // 人物血量 控制开关
-                Checkbox_Widgets("#ESP_Settings_HealthBar", &ESP_Settings::Settings_PlayerHealthBar);
+                Checkbox_Widgets("#ESP HealthBar", &ESP_Settings::PlayerHealthBar_Settings);
             },
             40.f);
 
         CompLayout::TextAlign_Widgets(
-            ESP_Settings::Settings_PlayerDistance ? "Player Distance - ON" : "Player Distance - OFF",
+            ESP_Settings::PlayerDistance_Settings ? "PlayerDistance - ON" : "PlayerDistance - OFF",
             []()
             {
                 // 人物距离 控制开关
-                Checkbox_Widgets("#Settings_PlayerDistance", &ESP_Settings::Settings_PlayerDistance);
+                Checkbox_Widgets("#ESP Distance", &ESP_Settings::PlayerDistance_Settings);
             },
             40.f);
 
         CompLayout::TextAlign_Widgets(
-            ESP_Settings::Settings_PlayerName ? "Player Name - ON" : "Player Name - OFF",
+            ESP_Settings::PlayerName_Settings ? "PlayerName - ON" : "PlayerName - OFF",
             []()
             {
                 // 人物名称 控制开关
-                Checkbox_Widgets("#Settings_PlayerName", &ESP_Settings::Settings_PlayerName);
+                Checkbox_Widgets("#ESP Name", &ESP_Settings::PlayerName_Settings);
             },
             40.f);
     }

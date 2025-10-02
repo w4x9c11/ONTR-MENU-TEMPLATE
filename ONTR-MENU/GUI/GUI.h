@@ -10,7 +10,7 @@
 #include "../lib/VendorModle/nvidia-API.hpp"
 #include "../lib/nlohmann/json.hpp"
 // ImGui 依赖库
-#include "ImGui-UI/imgui.h"
-#include "ImGui-UI/imgui_internal.h"
+#include "ImGui/imgui.h"
+#include "ImGui/imgui_internal.h"
 
 #include "../HACK/HACK.h"
