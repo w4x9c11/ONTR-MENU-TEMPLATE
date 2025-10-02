@@ -15,7 +15,7 @@ void Panel_Layout()
 
 // 顶部栏
 void NavBar_Layout()
-{   
+{
     const float NavBarHeight = 40.0f;                       // 顶部栏高度
     const float IconSize = 25.0f;                           // 图标默认大小
     const float CursorY = (NavBarHeight - IconSize) * 0.5f; // 顶部栏居中
@@ -37,7 +37,7 @@ void NavBar_Layout()
         SwitchPage_Data::CurrentPage = 0;
     }
     ImGui::SameLine();
-    
+
     ImGui::SetCursorPosX(NavBarWidth * 0.1f);
     if (IconButton("#ESP", "ESP", IconTexture::esp, IconTexture::esp_size, ImVec2(IconSize, IconSize)))
     {
@@ -77,24 +77,24 @@ void Figure_Settings()
         ImGui::SetCursorPos(CenterPos);
         RenderTexture("figure", ImageTexture::figure, ImageTexture::figure_size, ImVec2(604, 1070));
         // 功能判断::矩形边框
-        if (ESP_Settings::Settings_Player2DBOX)
+        if (ESP_Settings::Player2DBOX_Settings)
         {
             ImGui::GetWindowDrawList()->AddRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax(), ESP_Data::Player2DBOX_Color, 0.0f, 0, 2.0f);
         }
 
-        if (AIM_Settings::Settings_PlayerHeadAIM)
+        if (AIM_Settings::PlayerHeadAIM_Settings)
         {
             ImGui::SetCursorPos(ImVec2(CenterPos.x + 290.f, CenterPos.y + 10.f));
             RenderTexture("Red_AIM", IconTexture::Red_AIM, IconTexture::Red_AIM_Size, ImVec2(30, 30));
         }
 
-        if (AIM_Settings::Settings_PlayerArmAIM)
+        if (AIM_Settings::PlayerArmAIM_Settings)
         {
             ImGui::SetCursorPos(ImVec2(CenterPos.x + 95.f, CenterPos.y + 350.f));
             RenderTexture("Green_AIM", IconTexture::Green_AIM, IconTexture::Green_AIM_Size, ImVec2(30, 30));
         }
 
-        if (AIM_Settings::Settings_PlayerChestAIM)
+        if (AIM_Settings::PlayerChestAIM_Settings)
         {
             ImGui::SetCursorPos(ImVec2(CenterPos.x + 290.f, CenterPos.y + 250.f));
             RenderTexture("Yellow_AIM", IconTexture::Yellow_AIM, IconTexture::Yellow_AIM_Size, ImVec2(30, 30));

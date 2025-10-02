@@ -6,7 +6,9 @@ extern HWND hwnd;
 void Home_Layout()
 {
     // Left Panel
-    (ImGui::GetTime() - Notify_Data::UpdataNotify_Time >= 30.f || (Notify_Data::Announce.empty() && !Notify_Data::Loading_Notify)) ? (Notify_Data::UpdataNotify_Time = static_cast<float>(ImGui::GetTime()), HomeModule::Get_Notify()) : void();
+
+    // 初始化获取公告时间
+    // (ImGui::GetTime() - Notify_Data::UpdataNotify_Time >= 30.f || (Notify_Data::Announce.empty() && !Notify_Data::Loading_Notify)) ? (Notify_Data::UpdataNotify_Time = static_cast<float>(ImGui::GetTime()), HomeModule::Get_Notify()) : void();
 
     BeginChild_Layout("Notify & Help", {ImGui::GetWindowWidth() * 0.3f, ImGui::GetContentRegionAvail().y});
     {
@@ -16,11 +18,12 @@ void Home_Layout()
         for (const auto &[title, content, date] : Notify_Data::Announce)
         {
             CompLayout::CenterNextWidth(ImGui::GetWindowWidth() * 0.8f); // 居中
-            Notify_Widgets(content.c_str(),
-                (date + ": " + title).c_str(),
-                0.2f,
-                IconTexture::OK, IconTexture::OK_size, IconTexture::Bar, IconTexture::Bar_size, IconTexture::quantity, IconTexture::quantity_size);
-            ImGui::EndChild();
+            // 获取公告
+            // Notify_Widgets(content.c_str(),
+            //     (date + ": " + title).c_str(),
+            //     0.2f,
+            //     IconTexture::OK, IconTexture::OK_size, IconTexture::Bar, IconTexture::Bar_size, IconTexture::quantity, IconTexture::quantity_size);
+            // ImGui::EndChild();
 
             ImGui::Dummy(ImVec2(0, 30)); // 间距
         }

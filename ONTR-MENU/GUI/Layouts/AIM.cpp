@@ -13,56 +13,56 @@ void AIM_Layout()
         ImGui::Dummy(ImVec2(0, 30));
 
         CompLayout::TextAlign_Widgets(
-            AIM_Settings::Settings_PlayerAIM ? "Player AIM - ON" : "Player AIM - OFF",
+            AIM_Settings::PlayerAIM_Settings ? "PlayerAIM - ON" : "PlayerAIM - OFF",
             []()
             {
                 // 人物自瞄 控制开关
-                Checkbox_Widgets("#Settings_PlayerAIM", &AIM_Settings::Settings_PlayerAIM);
+                Checkbox_Widgets("#PlayerAIM_Settings", &AIM_Settings::PlayerAIM_Settings);
             },
             40.f);
 
         CompLayout::TextAlign_Widgets(
-            AIM_Settings::Settings_PlayerHeadAIM ? "Player Head AIM - ON" : "Player Head AIM - OFF",
+            AIM_Settings::PlayerHeadAIM_Settings ? "PlayerHeadAIM - ON" : "PlayerHeadAIM - OFF",
             []()
             {
                 // 人物头部自瞄 控制开关
-                Checkbox_Widgets("#Settings_PlayerHeadAIM", &AIM_Settings::Settings_PlayerHeadAIM);
+                Checkbox_Widgets("#PlayerHeadAIM_Settings", &AIM_Settings::PlayerHeadAIM_Settings);
             },
             40.f);
 
         CompLayout::TextAlign_Widgets(
-            AIM_Settings::Settings_PlayerArmAIM ? "Player Arm AIM - ON" : "Player Arm AIM - OFF",
+            AIM_Settings::PlayerArmAIM_Settings ? "PlayerArmAIM - ON" : "PlayerArmAIM - OFF",
             []()
             {
                 // 人物手臂自瞄 控制开关
-                Checkbox_Widgets("#Settings_PlayerArmAIM", &AIM_Settings::Settings_PlayerArmAIM);
+                Checkbox_Widgets("#PlayerArmAIM_Settings", &AIM_Settings::PlayerArmAIM_Settings);
             },
             40.f);
 
         CompLayout::TextAlign_Widgets(
-            AIM_Settings::Settings_PlayerLegsAIM ? "Player Legs AIM - ON" : "Player Legs AIM - OFF",
+            AIM_Settings::PlayerLegsAIM_Settings ? "PlayerLegsAIM - ON" : "PlayerLegsAIM - OFF",
             []()
             {
                 // 人物腿部自瞄 控制开关
-                Checkbox_Widgets("#Settings_PlayerLegsAIM", &AIM_Settings::Settings_PlayerLegsAIM);
+                Checkbox_Widgets("#PlayerLegsAIM_Settings", &AIM_Settings::PlayerLegsAIM_Settings);
             },
             40.f);
 
         CompLayout::TextAlign_Widgets(
-            AIM_Settings::Settings_PlayerFootAIM ? "Player Foot AIM - ON" : "Player Foot AIM - OFF",
+            AIM_Settings::PlayerFootAIM_Settings ? "PlayerFootAIM - ON" : "PlayerFootAIM - OFF",
             []()
             {
                 // 人物脚部自瞄 控制开关
-                Checkbox_Widgets("#Settings_PlayerFootAIM", &AIM_Settings::Settings_PlayerFootAIM);
+                Checkbox_Widgets("#PlayerFootAIM_Settings", &AIM_Settings::PlayerFootAIM_Settings);
             },
             40.f);
 
         CompLayout::TextAlign_Widgets(
-            AIM_Settings::Settings_PlayerChestAIM ? "Player Chest AIM - ON" : "Player Chest AIM - OFF",
+            AIM_Settings::PlayerChestAIM_Settings ? "PlayerChestAIM - ON" : "PlayerChestAIM - OFF",
             []()
             {
                 // 人物名称 控制开关
-                Checkbox_Widgets("#Settings_PlayerChestAIM", &AIM_Settings::Settings_PlayerChestAIM);
+                Checkbox_Widgets("#PlayerChestAIM_Settings", &AIM_Settings::PlayerChestAIM_Settings);
             },
             40.f);
     }

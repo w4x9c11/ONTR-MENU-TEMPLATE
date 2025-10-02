@@ -1,6 +1,6 @@
 #pragma once
-#include "../ImGui-UI/imgui.h"
-#include "../ImGui-UI/imgui_internal.h"
+#include "../ImGui/imgui.h"
+#include "../ImGui/imgui_internal.h"
 #include <algorithm>
 
 class SlideAnimation {
