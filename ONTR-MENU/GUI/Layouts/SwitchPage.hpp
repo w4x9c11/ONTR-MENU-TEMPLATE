@@ -1,6 +1,6 @@
 #pragma once
-#include "../Elements/Animation.h"
-#include "../Elements/PagesData.h"
+#include "Elements/Animation.h"
+#include "Elements/PagesData.h"
 
 void Home_Layout();
 void ESP_Layout();

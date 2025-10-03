@@ -1,5 +1,5 @@
 #pragma once
-#include "../../lib/VendorModle/stb-API.hpp" // 清理图片资源
+#include "VendorModle/stb-API.hpp" // 清理图片资源
 #include "device.h"
 
 

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../Elements/PagesData.h"
-#include "../ImGui/imgui_impl_dx11.h"
-#include "../ImGui/imgui_impl_win32.h"
+#include "Elements/PagesData.h"
+#include "ImGui/imgui_impl_dx11.h"
+#include "ImGui/imgui_impl_win32.h"
 
 extern ID3D11Device*            g_pd3dDevice;
 extern ID3D11DeviceContext*     g_pd3dDeviceContext;

@@ -1,5 +1,5 @@
 /* 固定页面 */
-#include "../GUI.h"
+#include "GUI.h"
 
 // 主窗口
 void Panel_Layout()

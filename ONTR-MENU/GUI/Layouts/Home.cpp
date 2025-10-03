@@ -1,5 +1,5 @@
-#include "../DeviceIO/device.h"
-#include "../GUI.h"
+#include "DeviceIO/device.h"
+#include "GUI.h"
 
 extern HWND hwnd;
 

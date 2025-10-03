@@ -1,4 +1,12 @@
 CompileFlags:
-  Add: [-std=c++20, -Wall, -Wextra]
+  CompilationDatabase: .
+  Add:
+    - --driver-mode=cl
+    - -fms-compatibility
+    - -fms-extensions
+    - -fdelayed-template-parsing
+  Remove:
+    - -m*
 Index:
   Background: Build
+  StandardLibrary: true

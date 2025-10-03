@@ -1,4 +1,4 @@
-#include "../GUI.h"
+#include "GUI.h"
 
 void Config_Layout()
 {

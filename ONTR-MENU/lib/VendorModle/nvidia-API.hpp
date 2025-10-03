@@ -7,8 +7,8 @@
 #include <windows.h>
 
 // NVIDIA SDK
-#include "../NVIDIA-SDK/nvapi.h"
-#include "../NVIDIA-SDK/nvapi_lite_common.h"
+#include "NVIDIA-SDK/nvapi.h"
+#include "NVIDIA-SDK/nvapi_lite_common.h"
 
 struct NVIDIA_Performance
 {

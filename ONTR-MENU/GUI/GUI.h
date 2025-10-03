@@ -7,8 +7,8 @@
 #include "Elements/Widgets.h"
 #include "Layouts/SwitchPage.hpp"
 // 外部依赖库
-#include "../lib/VendorModle/nvidia-API.hpp"
-#include "../lib/nlohmann/json.hpp"
+#include "VendorModle/nvidia-API.hpp"
+#include "nlohmann/json.hpp"
 // ImGui 依赖库
 #include "ImGui/imgui.h"
 #include "ImGui/imgui_internal.h"

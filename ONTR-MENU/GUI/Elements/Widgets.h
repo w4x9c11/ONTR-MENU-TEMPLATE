@@ -1,9 +1,9 @@
 #pragma once
-#include "../../lib/VendorModle/Resources/GUI-icon.h"
-#include "../../lib/VendorModle/Resources/GUI-image.h"
-#include "../../lib/VendorModle/stb-API.hpp"
+#include "VendorModle/Resources/GUI-icon.h"
+#include "VendorModle/Resources/GUI-image.h"
+#include "VendorModle/stb-API.hpp"
 
-#include "../ImGui/imgui_internal.h"
+#include "ImGui/imgui_internal.h"
 
 namespace CompLayout
 {

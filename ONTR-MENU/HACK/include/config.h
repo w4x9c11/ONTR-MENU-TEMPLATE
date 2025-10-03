@@ -1,5 +1,5 @@
 #pragma once
-#include "../../GUI/ImGui/imgui.h"
+#include "ImGui/imgui.h"
 
 struct ESP_Settings
 {

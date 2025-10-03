@@ -1,6 +1,6 @@
 #pragma once
-#include "../ImGui/imgui.h"
-#include "../../lib/nlohmann/json.hpp"
+#include "ImGui/imgui.h"
+#include "nlohmann/json.hpp"
 
 #include <d3d11.h>
 #include <Windows.h>
